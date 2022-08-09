@@ -5,8 +5,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.spring_boot_mybatis.dto.UserSearchRequest;
 import com.example.spring_boot_mybatis.entity.User;
@@ -27,20 +25,11 @@ public class UserController {
     return "user/search";
   }
 
-  @RequestMapping(value = "/user/id_search", method = RequestMethod.POST)
-  // @PostMapping("/user/id_search")
+  @PostMapping("/user/id_search")
   public String search(@ModelAttribute UserSearchRequest userSearchRequest, Model model) {
     User user = userService.search(userSearchRequest);
     model.addAttribute("userinfo", user);
     return "user/search";
   }
 
-  @GetMapping("/user/test")
-  public String string() {
-    return "user/test";
-  }
-  
-
-
-  
 }
